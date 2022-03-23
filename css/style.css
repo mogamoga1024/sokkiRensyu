@@ -13,16 +13,31 @@ body {
 #question-hiragana {
     width: 200px;
     height: 200px;
-    margin: 25px auto 0;
+    margin: 12px auto 0;
     text-align: center;
     line-height: 200px;
     font-size: 160px;
     user-select: none;
 }
 
-canvas {
+#canvas {
     display: block;
     border: solid 1px black;
-    margin: 25px auto 0;
+    margin: 12px auto 0;
 }
 
+#button-container {
+    width: fit-content;
+    margin: 12px auto 0;
+}
+
+#clear-button {
+    width: 80px;
+    height: 30px;
+}
+
+#next-button {
+    width: 80px;
+    height: 30px;
+    margin-left: 30px;
+}

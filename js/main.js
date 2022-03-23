@@ -28,28 +28,56 @@ function draw(x, y) {
     lastPosition.y = y;
 }
 
-function dragStart() {
+function drawStart() {
     context.beginPath();
     isDrag = true;
 }
 
-function dragEnd() {
+function drawEnd(x, y) {
+    draw(x, y); // クリックのみでドラッグされなかった場合、点を描画するために呼び出す。
     context.closePath();
     isDrag = false;
     lastPosition.x = null;
     lastPosition.y = null;
 }
 
+function clear() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+const questionHiragana = document.getElementById("question-hiragana");
+
+const questionCharList = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわ";
+
+function changeQuestion() {
+    clear();
+
+    const currentChar = questionHiragana.innerText;
+    let nextChar = questionCharList[Math.floor(Math.random() * questionCharList.length)];
+    while (currentChar === nextChar) {
+        nextChar = questionCharList[Math.floor(Math.random() * questionCharList.length)];
+    }
+    questionHiragana.innerText = nextChar;
+}
+
 canvas.addEventListener("mousedown", (event) => {
     if (event.button !== 0) return; // 左クリック以外描画不可
-    dragStart();
+    drawStart();
 });
+
 canvas.addEventListener("mouseup", (event) => {
-    draw(event.layerX, event.layerY);
-    dragEnd();
+    drawEnd(event.layerX, event.layerY);
 });
-canvas.addEventListener("mouseout", dragEnd);
+
+canvas.addEventListener("mouseout", drawEnd);
+
 canvas.addEventListener("mousemove", (event) => {
     draw(event.layerX, event.layerY);
 });
 
+const clearButton = document.getElementById("clear-button");
+const nextButton = document.getElementById("next-button");
+
+clearButton.addEventListener("click", clear);
+
+nextButton.addEventListener("click", changeQuestion);
