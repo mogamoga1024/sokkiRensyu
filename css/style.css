@@ -12,12 +12,12 @@ body {
 }
 
 #question-hiragana {
-    width: 200px;
-    height: 200px;
+    width: 140px;
+    height: 140px;
     margin: 12px auto 0;
     text-align: center;
-    line-height: 200px;
-    font-size: 160px;
+    line-height: 140px;
+    font-size: 120px;
 }
 
 #canvas {
