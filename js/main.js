@@ -81,3 +81,6 @@ const nextButton = document.getElementById("next-button");
 clearButton.addEventListener("click", clear);
 
 nextButton.addEventListener("click", changeQuestion);
+
+changeQuestion();
+
