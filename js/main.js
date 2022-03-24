@@ -5,6 +5,9 @@ new Vue({
         gotoSettings: function() {
             this.$scrollTo("#gojuon");
         },
+    },
+    created() {
+        this.$cookies.config("1m");
     }
 });
 
