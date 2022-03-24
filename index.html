@@ -7,20 +7,17 @@
     <meta name="google-site-verification" content="lC35WW3W-lsbLS4budw6dEXX7vHAhTQ3CM3g_f0div8" />
     <title>速記の練習（50音）</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 </head>
 <body>
-    <div id="container">
-        <div id="question-hiragana"></div>
-        <canvas id="canvas" width="600" height="400"></canvas>
-        <div id="button-container">
-            <button id="clear-button">クリア</button><!--
-            --><button id="next-button">次へ</button>
-        </div>
+    <div id="app">
+        <question></question>
     </div>
     
     <script src="js/extensions.js"></script>
     <script src="js/sokkiCanvas.js"></script>
-    <script src="js/question.js"></script>
+    <script src="js/questionCreater.js"></script>
+    <script src="js/questionViewModel.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
