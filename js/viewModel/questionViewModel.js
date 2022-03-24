@@ -1,7 +1,7 @@
 
 Vue.component("question", {
     template: 
-        `<div id="container">
+        `<div>
             <div id="question-hiragana">{{question}}</div>
             <sokkiCanvas ref="sokkiCanvas" width="600" height="400"></sokkiCanvas>
             <div id="button-container">

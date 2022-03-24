@@ -56,3 +56,32 @@ body {
     cursor: pointer;
 }
 
+#gojuon {
+    width: fit-content;
+    margin: 150px auto 150px;
+}
+
+#gojuon table, #gojuon tr, #gojuon td {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+#gojuon td {
+    width: 80px;
+    height: 50px;
+    font-size: 40px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: white;
+    cursor: pointer;
+}
+
+.unselected {
+    background-color: gray !important;
+}
+
+.unselectable {
+    background-color: gray !important;
+    cursor: auto !important;
+}
+

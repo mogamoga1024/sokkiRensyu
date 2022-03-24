@@ -11,8 +11,11 @@
 </head>
 <body>
     <div id="app">
-        <question></question>
-        <div id="settings-button"></div>
+        <div id="container">
+            <question></question>
+            <settings></settings>
+        </div>
+        <div id="settings-button" @click="gotoSettings"></div>
     </div>
     
     <script src="js/extensions.js"></script>
@@ -20,6 +23,7 @@
     <script src="js/questionCreater.js"></script>
     <script src="js/viewModel/questionViewModel.js"></script>
     <script src="js/viewModel/sokkiCanvasViewModel.js"></script>
+    <script src="js/viewModel/settingsViewModel.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
