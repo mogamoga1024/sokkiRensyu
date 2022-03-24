@@ -12,9 +12,9 @@ class Question {
         this.#sokkiCanvas.clear();
 
         const currentChar = this.#questionDom.innerText;
-        let nextChar = this.#questionCharList[Math.floor(Math.random() * this.#questionCharList.length)];
+        let nextChar = this.#questionCharList[Math.randomInt(this.#questionCharList.length)];
         while (currentChar === nextChar) {
-            nextChar = this.#questionCharList[Math.floor(Math.random() * this.#questionCharList.length)];
+            nextChar = this.#questionCharList[Math.randomInt(this.#questionCharList.length)];
         }
         this.#questionDom.innerText = nextChar;
     }
