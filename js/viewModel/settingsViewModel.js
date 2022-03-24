@@ -51,9 +51,6 @@ Vue.component("settings", {
             });
         }
     },
-    mounted() {
-        
-    }
 });
 
 
