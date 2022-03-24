@@ -1,6 +1,6 @@
 
 class Gojuon {
-    static #charList = [
+    static #charTable = [
         [new CharManager("あ"), new CharManager("い"), new CharManager("う"), new CharManager("え"), new CharManager("お")],
         [new CharManager("か"), new CharManager("き"), new CharManager("く"), new CharManager("け"), new CharManager("こ")],
         [new CharManager("さ"), new CharManager("し"), new CharManager("す"), new CharManager("せ"), new CharManager("そ")],
@@ -13,12 +13,12 @@ class Gojuon {
         [new CharManager("わ"), null                 , null                 , null                 , null                 ],
     ];
 
-    static get charList() {
-        return this.#charList;
+    static get charTable() {
+        return this.#charTable;
     }
 
     static get selectedCharList() {
-        return this.#charList.flat().filter(c => c !== null && c.isSelected).map(c => c.char);
+        return this.#charTable.flat().filter(c => c !== null && c.isSelected).map(c => c.char);
     }
 };
 

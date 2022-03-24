@@ -12,7 +12,7 @@ Vue.component("settings", {
                         ></div>
                     </td>
                 </tr>
-                <tr v-for="(gojuonRow, index) in gojuonList">
+                <tr v-for="(gojuonRow, index) in gojuonTable">
                     <td class="clear border-right right-arrow-width">
                         <div 
                             class="right-arrow-button"
@@ -31,23 +31,31 @@ Vue.component("settings", {
         </div>`,
     data: function() {
         return {
-            gojuonList: Gojuon.charList
+            gojuonTable: Gojuon.charTable
         }
     },
     methods: {
         charActiveSwitch: function(char) {
             char.isSelected = !char.isSelected;
+            this.$cookies.set(char.char, char.isSelected);
         },
         rowCharActiveSwitch: function(index) {
-            const isSelected = this.gojuonList[index].filter(c => c !== null && c.isSelected).length === 0;
-            this.gojuonList[index].forEach(c => {
-                if (c !== null) c.isSelected = isSelected;
+            const isSelected = this.gojuonTable[index].filter(c => c !== null && c.isSelected).length === 0;
+            this.gojuonTable[index].forEach(c => {
+                if (c !== null) {
+                    c.isSelected = isSelected;
+                    this.$cookies.set(c.char, c.isSelected);
+                }
             });
         },
         colCharActiveSwitch: function(index) {
-            const isSelected = this.gojuonList.filter(row => row[index] !== null && row[index].isSelected).length === 0;
-            this.gojuonList.forEach(row => {
-                if (row[index] !== null) row[index].isSelected = isSelected;
+            const isSelected = this.gojuonTable.filter(row => row[index] !== null && row[index].isSelected).length === 0;
+            this.gojuonTable.forEach(row => {
+                const c = row[index];
+                if (c !== null) {
+                    c.isSelected = isSelected;
+                    this.$cookies.set(c.char, c.isSelected);
+                }
             });
         }
     },

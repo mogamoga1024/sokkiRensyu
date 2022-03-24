@@ -8,6 +8,9 @@ new Vue({
     },
     created() {
         this.$cookies.config("1m");
+        for (const key of this.$cookies.keys()) {
+            
+        }
     }
 });
 
