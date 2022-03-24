@@ -13,30 +13,9 @@ class SokkiCanvas {
 
         this.#lastPosition = {x: null, y: null};
         this.#isDrag = false;
-
-        this.#addEvent(canvas);
     }
 
-    #addEvent(canvas) {
-        canvas.addEventListener("mousedown", (event) => {
-            if (event.button !== 0) return; // 左クリック以外描画不可
-            this.#drawStart();
-        });
-        
-        canvas.addEventListener("mouseup", (event) => {
-            this.#drawEnd(event.offsetX, event.offsetY);
-        });
-        
-        canvas.addEventListener("mouseout", () => {
-            this.#drawEnd();
-        });
-        
-        canvas.addEventListener("mousemove", (event) => {
-            this.#draw(event.offsetX, event.offsetY);
-        });
-    }
-
-    #draw(x, y) {
+    draw(x, y) {
         if(this.#isDrag === false) {
             return;
         }
@@ -53,13 +32,13 @@ class SokkiCanvas {
         this.#lastPosition.y = y;
     }
     
-    #drawStart() {
+    drawStart() {
         this.#context.beginPath();
         this.#isDrag = true;
     }
     
-    #drawEnd(x, y) {
-        this.#draw(x, y); // クリックのみでドラッグされなかった場合、点を描画するために呼び出す。
+    drawEnd(x, y) {
+        this.draw(x, y); // クリックのみでドラッグされなかった場合、点を描画するために呼び出す。
         this.#context.closePath();
         this.#isDrag = false;
         this.#lastPosition.x = null;
