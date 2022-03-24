@@ -1,12 +1,13 @@
 
 Vue.component("sokkiCanvas", {
     template:
-        `<canvas id="canvas" width="600" height="400"
+        `<canvas id="canvas" :width="width" :height="height"
             @mousedown="drawStart($event)"
             @mousemove="draw($event)"
             @mouseup="drawEnd($event)"
             @mouseout="drawEnd($event)"
         ></canvas>`,
+    props: ["width", "height"],
     data: function() {
         return {
             sokkiCanvas: null
