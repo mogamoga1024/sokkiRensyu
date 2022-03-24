@@ -58,7 +58,8 @@ body {
 
 #gojuon {
     width: fit-content;
-    margin: 150px auto 150px;
+    margin: 75px auto 150px;
+    padding: 75px 0 0;
 }
 
 #gojuon table, #gojuon tr, #gojuon td {

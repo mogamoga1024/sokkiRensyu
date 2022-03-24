@@ -1,6 +1,4 @@
 
-
-
 new Vue({
     el: "#app",
     data: {
@@ -8,7 +6,7 @@ new Vue({
     },
     methods: {
         gotoSettings: function() {
-            
+            this.$scrollTo("#gojuon");
         },
     }
 });
