@@ -66,13 +66,13 @@ canvas.addEventListener("mousedown", (event) => {
 });
 
 canvas.addEventListener("mouseup", (event) => {
-    drawEnd(event.layerX, event.layerY);
+    drawEnd(event.offsetX, event.offsetY);
 });
 
 canvas.addEventListener("mouseout", drawEnd);
 
 canvas.addEventListener("mousemove", (event) => {
-    draw(event.layerX, event.layerY);
+    draw(event.offsetX, event.offsetY);
 });
 
 const clearButton = document.getElementById("clear-button");
