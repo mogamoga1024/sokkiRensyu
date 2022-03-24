@@ -77,12 +77,47 @@ body {
     cursor: pointer;
 }
 
-.unselected {
-    background-color: gray !important;
+#gojuon td.unselected {
+    background-color: gray;
 }
 
-.unselectable {
-    background-color: gray !important;
-    cursor: auto !important;
+#gojuon td.unselectable {
+    background-color: gray;
+    cursor: auto;
 }
+
+#gojuon td.clear {
+    border: 1px solid transparent;
+    background-color: transparent;
+    cursor: auto;
+}
+
+#gojuon td.border-bottom {
+    border-bottom: 1px solid black;
+}
+
+#gojuon td.border-right {
+    border-right: 1px solid black;
+}
+
+#gojuon td.right-arrow-width {
+    width: 48px;
+}
+
+.right-arrow-button {
+    width: 48px;
+    height: 48px;
+    margin: 1px 0;
+    background: url("../assets/right-arrow.svg") no-repeat;
+    cursor: pointer;
+}
+
+.down-arrow-button {
+    width: 48px;
+    height: 48px;
+    margin: 2px auto 0;
+    background: url("../assets/down-arrow.svg") no-repeat;
+    cursor: pointer;
+}
+
 
