@@ -14,7 +14,8 @@ body {
 #question-hiragana {
     width: fit-content;
     height: 140px;
-    margin: 12px auto 0;
+    margin: 0 auto 0;
+    padding-top: 16px;
     text-align: center;
     line-height: 140px;
     font-size: 120px;
@@ -44,7 +45,7 @@ body {
 
 #settings-button {
     position: fixed;
-    right: 50px;
+    right: 108px;
     bottom: 50px;
     width: 48px;
     height: 48px;
@@ -52,6 +53,20 @@ body {
 }
 
 #settings-button:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+#top-button {
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    width: 48px;
+    height: 48px;
+    background: url("../assets/short-up-arrow.svg") no-repeat;
+}
+
+#top-button:hover {
     opacity: 0.7;
     cursor: pointer;
 }

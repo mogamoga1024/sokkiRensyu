@@ -2,6 +2,9 @@
 new Vue({
     el: "#app",
     methods: {
+        gotoTop: function() {
+            this.$scrollTo("#app");
+        },
         gotoSettings: function() {
             this.$scrollTo("#gojuon");
         },
