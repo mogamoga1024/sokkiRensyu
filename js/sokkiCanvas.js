@@ -9,7 +9,8 @@ class SokkiCanvas {
         this.#context.lineCap = "round";
         this.#context.lineJoin = "round";
         this.#context.lineWidth = 5;
-        this.#context.strokeStyle = "black";
+        //this.#context.strokeStyle = "black";
+        this.#context.strokeStyle = "darkgray";
 
         this.#lastPosition = {x: null, y: null};
         this.#isDrag = false;

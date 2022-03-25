@@ -3,7 +3,7 @@ Vue.component("question", {
     template: 
         `<div>
             <div id="question-hiragana">{{question}}</div>
-            <sokkiCanvas ref="sokkiCanvas" width="600" height="400"></sokkiCanvas>
+            <sokkiCanvas ref="sokkiCanvas" width="400" height="400"></sokkiCanvas>
             <div id="button-container">
                 <button id="clear-button" @click="clearCanvas">クリア</button><!--
                 --><button id="next-button" @click="nextQuestion">次へ</button>
