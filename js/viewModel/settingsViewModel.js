@@ -4,7 +4,12 @@ Vue.component("settings", {
         `<div id="gojuon">
             <table>
                 <tr>
-                    <td class="clear right-arrow-width"></td>
+                    <td class="clear right-arrow-width">
+                        <div 
+                            class="reset-arrow-button"
+                            @click="reset"
+                        ></div>
+                    </td>
                     <td class="clear border-bottom" v-for="n in 5">
                         <div
                             class="down-arrow-button"
@@ -56,6 +61,16 @@ Vue.component("settings", {
                     c.isSelected = isSelected;
                     this.$cookies.set(c.char, c.isSelected);
                 }
+            });
+        },
+        reset: function() {
+            this.gojuonTable.forEach(row => {
+                row.forEach(c => {
+                    if (c !== null) {
+                        c.isSelected = true;
+                        this.$cookies.set(c.char, c.isSelected);
+                    }
+                });
             });
         }
     },

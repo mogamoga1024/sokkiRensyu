@@ -112,6 +112,11 @@ body {
     cursor: pointer;
 }
 
+.right-arrow-button:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
 .down-arrow-button {
     width: 48px;
     height: 48px;
@@ -120,4 +125,20 @@ body {
     cursor: pointer;
 }
 
+.down-arrow-button:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
 
+.reset-arrow-button {
+    width: 48px;
+    height: 48px;
+    margin: 2px auto 0;
+    background: url("../assets/reset.svg") no-repeat;
+    cursor: pointer;
+}
+
+.reset-arrow-button:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
