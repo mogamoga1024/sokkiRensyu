@@ -1,5 +1,6 @@
 
 Vue.component("sokkiCanvas", {
+    props: ["width", "height"],
     template:
         `<canvas id="canvas" :width="width" :height="height"
             @mousedown="drawStart($event)"
@@ -7,11 +8,13 @@ Vue.component("sokkiCanvas", {
             @mouseup="drawEnd($event)"
             @mouseout="drawEnd($event)"
         ></canvas>`,
-    props: ["width", "height"],
     data: function() {
         return {
             sokkiCanvas: null
         }
+    },
+    mounted() {
+        this.sokkiCanvas = new SokkiCanvas(this.$el);
     },
     methods: {
         drawStart: function(event) {
@@ -26,10 +29,10 @@ Vue.component("sokkiCanvas", {
         },
         clear: function() {
             this.sokkiCanvas.clear();
+        },
+        addTraceImage: function(imagePath) {
+            this.sokkiCanvas.addTraceImage(imagePath);
         }
-    },
-    mounted() {
-        this.sokkiCanvas = new SokkiCanvas(this.$el);
     }
 });
 

@@ -48,5 +48,15 @@ class SokkiCanvas {
     clear() {
         this.#context.clearRect(0, 0, this.#canvas.width, this.#canvas.height);
     }
+
+    addTraceImage(imagePath) {
+        if (imagePath === null) return;
+
+        const image = new Image();
+        image.src = imagePath;
+        image.onload = () => {
+            this.#context.drawImage(image, (this.#canvas.width - image.width) / 2, (this.#canvas.height - image.height) / 2);
+        };
+    }
 }
 
