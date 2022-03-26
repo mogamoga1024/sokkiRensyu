@@ -12,8 +12,8 @@ new Vue({
     created() {
         this.$cookies.config("1m");
         const charDic = Gojuon.charDic;
-        for (const key of this.$cookies.keys()) {
-            if (key in charDic) {
+        for (const key in charDic) {
+            if (this.$cookies.isKey(key)) {
                 charDic[key].isSelected = this.$cookies.get(key) === "true";
             }
         }
