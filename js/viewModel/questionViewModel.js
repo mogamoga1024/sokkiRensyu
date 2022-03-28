@@ -3,7 +3,9 @@ Vue.component("question", {
     template: 
         `<div>
             <div id="question-hiragana">{{question}}</div>
-            <sokkiCanvas ref="sokkiCanvas" width="600" height="400"></sokkiCanvas>
+            <div @click.right.prevent="nextQuestion">
+                <sokkiCanvas ref="sokkiCanvas" width="600" height="400"></sokkiCanvas>
+            </div>
             <div id="button-container">
                 <label for="random-checkbox">
                     <input type="checkbox" id="random-checkbox" :checked="isRandom" @click="random" />ランダム
