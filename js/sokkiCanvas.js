@@ -1,6 +1,7 @@
 
 class SokkiCanvas {
     #context; #traceContext; #lastPosition; #canDraw;
+    #semaphore = 2;
 
     constructor(canvas, traceCanvas) {
         this.#context = canvas.getContext("2d");
@@ -50,15 +51,24 @@ class SokkiCanvas {
         this.#context.clearRect(0, 0, canvas.width, canvas.height);
     }
 
-    addTraceImage(imagePath) {
+    async addTraceImage(imagePath) {
         if (imagePath === null) return;
 
         const image = new Image();
         image.src = imagePath;
-        image.onload = () => {
-            const canvas = this.#traceContext.canvas;
-            this.#traceContext.drawImage(image, (canvas.width - image.width) / 2, (canvas.height - image.height) / 2);
-        };
+
+        this.#semaphore--;
+        await new Promise(resolve => {
+            image.onload = () => {
+                const canvas = this.#traceContext.canvas;
+                if (this.#semaphore > 0) {
+                    this.removeTraceImage();
+                    this.#traceContext.drawImage(image, (canvas.width - image.width) / 2, (canvas.height - image.height) / 2);
+                }
+                this.#semaphore++;
+                resolve();
+            };
+        });
     }
 
     removeTraceImage() {
