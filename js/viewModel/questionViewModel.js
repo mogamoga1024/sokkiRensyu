@@ -22,7 +22,7 @@ Vue.component("question", {
     computed: {
         traceImagePath: function() {
             if (this.question === "") return null;
-            return "../assets/sample/" + this.question + ".png";
+            return document.location.href + "assets/sample/" + this.question + ".png";
         }
     },
     created() {
