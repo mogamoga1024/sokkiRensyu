@@ -39,6 +39,10 @@ body {
     margin: 12px auto 0;
 }
 
+#trace-checkbox {
+    margin-left: 30px;
+}
+
 #clear-button {
     width: 80px;
     height: 30px;

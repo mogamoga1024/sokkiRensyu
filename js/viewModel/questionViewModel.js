@@ -5,8 +5,11 @@ Vue.component("question", {
             <div id="question-hiragana">{{question}}</div>
             <sokkiCanvas ref="sokkiCanvas" width="600" height="400"></sokkiCanvas>
             <div id="button-container">
-                <label for="trace_checkbox">
-                    <input type="checkbox" id="trace_checkbox" v-model="isTrace" @click="trace" />トレス
+                <label for="random-checkbox">
+                    <input type="checkbox" id="random-checkbox" v-model="isRandom" @click="random" />ランダム
+                </label><!--
+                --><label for="trace-checkbox">
+                    <input type="checkbox" id="trace-checkbox" v-model="isTrace" @click="trace" />トレス
                 </label><!--
                 --><button id="clear-button" @click="clearCanvas">クリア</button><!--
                 --><button id="next-button" @click="nextQuestion">次へ</button>
@@ -16,6 +19,7 @@ Vue.component("question", {
         return {
             questionCreater: null,
             question: "",
+            isRandom: false,
             isTrace: false,
         }
     },
@@ -33,6 +37,10 @@ Vue.component("question", {
         this.nextQuestion();
     },
     methods: {
+        random: function() {
+            this.isRandom = !this.isRandom;
+            
+        },
         trace: function() {
             this.isTrace = !this.isTrace;
             this.$cookies.set("isTrace", this.isTrace);
