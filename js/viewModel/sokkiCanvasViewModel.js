@@ -6,6 +6,7 @@ Vue.component("sokkiCanvas", {
             <canvas ref="traceCanvas" :width="width" :height="height"></canvas>
             <canvas ref="drawingCanvas" :width="width" :height="height"
                 @mousedown="drawStart($event)"
+                @mouseover="drawStart($event)"
                 @mousemove="draw($event)"
                 @mouseup="drawEnd($event)"
                 @mouseout="drawEnd($event)"
@@ -21,7 +22,7 @@ Vue.component("sokkiCanvas", {
     },
     methods: {
         drawStart: function(event) {
-            if (event.button !== 0) return; // 左クリック以外描画不可
+            if (event.buttons !== 1) return; // 左クリック以外描画不可
             this.sokkiCanvas.drawStart();
         },
         drawEnd: function(event) {

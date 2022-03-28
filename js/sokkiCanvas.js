@@ -1,6 +1,6 @@
 
 class SokkiCanvas {
-    #context; #traceContext; #lastPosition; #isDrag;
+    #context; #traceContext; #lastPosition; #canDraw;
 
     constructor(canvas, traceCanvas) {
         this.#context = canvas.getContext("2d");
@@ -12,11 +12,11 @@ class SokkiCanvas {
         this.#traceContext = traceCanvas.getContext("2d");
 
         this.#lastPosition = {x: null, y: null};
-        this.#isDrag = false;
+        this.#canDraw = false;
     }
 
     draw(x, y) {
-        if(this.#isDrag === false) {
+        if(this.#canDraw === false) {
             return;
         }
     
@@ -34,13 +34,13 @@ class SokkiCanvas {
     
     drawStart() {
         this.#context.beginPath();
-        this.#isDrag = true;
+        this.#canDraw = true;
     }
     
     drawEnd(x, y) {
         this.draw(x, y); // クリックのみでドラッグされなかった場合、点を描画するために呼び出す。
         this.#context.closePath();
-        this.#isDrag = false;
+        this.#canDraw = false;
         this.#lastPosition.x = null;
         this.#lastPosition.y = null;
     }
