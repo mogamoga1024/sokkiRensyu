@@ -58,7 +58,7 @@ Vue.component("question", {
         nextQuestion: function() {
             this.$refs.sokkiCanvas.clear();
             this.$refs.sokkiCanvas.removeTraceImage();
-            this.question = this.questionCreater.createQuestion(this.question, this.isRandom);
+            this.question = this.questionCreater.createQuestion(this.isRandom);
             if (this.isTrace) {
                 this.$refs.sokkiCanvas.addTraceImage(this.traceImagePath);
             }

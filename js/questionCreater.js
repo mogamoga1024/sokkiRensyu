@@ -1,37 +1,34 @@
 
 class QuestionCreater {
-    #questionCharIndex = 0;
-    #prevIsRandom = true;
+    #currentChar = null;
 
-    createQuestion(oldQuestion, isRandom) {
-        const questionCharList = Gojuon.selectedCharList;
-        
-        if (questionCharList.length === 0) return "";
-
-        let newQuestion = "";
+    createQuestion(isRandom) {
+        let newChar = null
         if (isRandom) {
-            do {
-                newQuestion = questionCharList[Math.randomInt(questionCharList.length)];
+            const charList = Gojuon.selectedCharList;
+
+            if (charList.length === 0) {
+                this.#currentChar = null;
+                return "";
             }
-            while (oldQuestion === newQuestion && questionCharList.length > 1);
+
+            do {
+                newChar = charList[Math.randomInt(charList.length)];
+            }
+            while (this.#currentChar === newChar && charList.length > 1);
         }
         else {
-            if (this.#prevIsRandom || this.#questionCharIndex >= questionCharList.length - 1) {
-                this.#questionCharIndex = 0;
-                newQuestion = questionCharList[this.#questionCharIndex];
-            }
-            else {
-                newQuestion = questionCharList[++this.#questionCharIndex];
-            }
-
-            if (this.#prevIsRandom && oldQuestion === newQuestion && questionCharList.length > 1) {
-                newQuestion = questionCharList[++this.#questionCharIndex];
+            newChar = Gojuon.nextSelectedChar(this.#currentChar);
+            
+            if (newChar === null) {
+                this.#currentChar = null;
+                return "";
             }
         }
         
-        this.#prevIsRandom = isRandom;
+        this.#currentChar = newChar;
 
-        return newQuestion;
+        return newChar.char;
     }
 }
 

@@ -53,7 +53,25 @@ class Gojuon {
     }
 
     static get selectedCharList() {
-        return this.#charTable.flat().filter(c => c !== null && c.isSelected).map(c => c.char);
+        return this.#charTable.flat().filter(c => c !== null && c.isSelected);
+    }
+
+    static nextSelectedChar(currentChar) {
+        const charList = this.selectedCharList;
+
+        if (charList.length === 0) {
+            return null;
+        }
+        if (currentChar === null) {
+            return charList[0];
+        }
+
+        for (const char of charList) {
+            if (char.order > currentChar.order) {
+                return char;
+            }
+        }
+        return charList[0];
     }
 };
 
