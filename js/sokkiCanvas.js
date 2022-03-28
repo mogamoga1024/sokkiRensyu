@@ -1,15 +1,15 @@
 
 class SokkiCanvas {
-    #canvas; #context; #lastPosition; #isDrag;
+    #context; #traceContext; #lastPosition; #isDrag;
 
-    constructor(canvas) {
-        this.#canvas = canvas;
-
+    constructor(canvas, traceCanvas) {
         this.#context = canvas.getContext("2d");
         this.#context.lineCap = "round";
         this.#context.lineJoin = "round";
         this.#context.lineWidth = 5;
         this.#context.strokeStyle = "black";
+
+        this.#traceContext = traceCanvas.getContext("2d");
 
         this.#lastPosition = {x: null, y: null};
         this.#isDrag = false;
@@ -46,7 +46,8 @@ class SokkiCanvas {
     }
     
     clear() {
-        this.#context.clearRect(0, 0, this.#canvas.width, this.#canvas.height);
+        const canvas = this.#context.canvas;
+        this.#context.clearRect(0, 0, canvas.width, canvas.height);
     }
 
     addTraceImage(imagePath) {
@@ -55,8 +56,14 @@ class SokkiCanvas {
         const image = new Image();
         image.src = imagePath;
         image.onload = () => {
-            this.#context.drawImage(image, (this.#canvas.width - image.width) / 2, (this.#canvas.height - image.height) / 2);
+            const canvas = this.#traceContext.canvas;
+            this.#traceContext.drawImage(image, (canvas.width - image.width) / 2, (canvas.height - image.height) / 2);
         };
+    }
+
+    removeTraceImage() {
+        const canvas = this.#traceContext.canvas;
+        this.#traceContext.clearRect(0, 0, canvas.width, canvas.height);
     }
 }
 

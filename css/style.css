@@ -21,10 +21,17 @@ body {
     font-size: 120px;
 }
 
-#canvas {
+#canvas-container {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    margin: 12px auto 0;
+}
+
+#canvas-container canvas {
+    position: absolute;
     display: block;
     border: solid 1px black;
-    margin: 12px auto 0;
 }
 
 #button-container {

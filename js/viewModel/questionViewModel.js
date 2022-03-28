@@ -40,17 +40,15 @@ Vue.component("question", {
                 this.$refs.sokkiCanvas.addTraceImage(this.traceImagePath);
             }
             else {
-                this.$refs.sokkiCanvas.clear();
+                this.$refs.sokkiCanvas.removeTraceImage();
             }
         },
         clearCanvas: function() {
             this.$refs.sokkiCanvas.clear();
-            if (this.isTrace) {
-                this.$refs.sokkiCanvas.addTraceImage(this.traceImagePath);
-            }
         },
         nextQuestion: function() {
             this.$refs.sokkiCanvas.clear();
+            this.$refs.sokkiCanvas.removeTraceImage();
             this.question = this.questionCreater.createQuestion(this.question);
             if (this.isTrace) {
                 this.$refs.sokkiCanvas.addTraceImage(this.traceImagePath);
