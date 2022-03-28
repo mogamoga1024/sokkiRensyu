@@ -30,6 +30,7 @@ Vue.component("question", {
         }
     },
     created() {
+        this.isRandom = this.$cookies.get("isRandom") === "true";
         this.isTrace = this.$cookies.get("isTrace") === "true";
         this.questionCreater = new QuestionCreater();
     },
@@ -39,7 +40,7 @@ Vue.component("question", {
     methods: {
         random: function() {
             this.isRandom = !this.isRandom;
-
+            this.$cookies.set("isRandom", this.isRandom);
         },
         trace: function() {
             this.isTrace = !this.isTrace;
@@ -57,7 +58,7 @@ Vue.component("question", {
         nextQuestion: function() {
             this.$refs.sokkiCanvas.clear();
             this.$refs.sokkiCanvas.removeTraceImage();
-            this.question = this.questionCreater.createQuestion(this.question);
+            this.question = this.questionCreater.createQuestion(this.question, this.isRandom);
             if (this.isTrace) {
                 this.$refs.sokkiCanvas.addTraceImage(this.traceImagePath);
             }
