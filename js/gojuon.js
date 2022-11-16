@@ -52,6 +52,10 @@ class Gojuon {
         return this.#charTable;
     }
 
+    static get charList() {
+        return this.#charTable.flat().filter(c => c !== null);
+    }
+
     static get selectedCharList() {
         return this.#charTable.flat().filter(c => c !== null && c.isSelected);
     }

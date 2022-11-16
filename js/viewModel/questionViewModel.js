@@ -28,13 +28,20 @@ Vue.component("question", {
     computed: {
         traceImagePath: function() {
             if (this.question === "") return null;
-            return document.location.href + "assets/sample/" + this.question + ".png";
+            return Common.traceImagePath(this.question);
         }
     },
     created() {
         this.isRandom = this.$cookies.get("isRandom") === "true";
         this.isTrace = this.$cookies.get("isTrace") === "true";
         this.questionCreater = new QuestionCreater();
+
+        // 画像の先読み込み
+        for (const char of Gojuon.charList) {
+            const imagePath = Common.traceImagePath(char.char);
+            const img = document.createElement("img");
+            img.src = imagePath;
+        }
     },
     mounted() {
         this.nextQuestion();
